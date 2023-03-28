@@ -1,6 +1,12 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    position: relative;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +27,43 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+/* header-footer */
+header {
+    width: 100%;
+    background-color: #1659bf;
+    color: white;
+}
+
+header img {
+    min-width: 400px;
+}
+
+header h1 a{
+    color: white;
+    font-size: 40px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+}
+
+footer #footer-ma {
+   background-color: #1659bf;
+   display: flex;
+   justify-content: center;
+}
+
+/* conteúdo */
+.hidden{
+    display: none;
+}
+
+.show{
+    display: block;
 }

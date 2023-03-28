@@ -13,6 +13,11 @@ Namespace Controllers
         Inherits System.Web.Mvc.Controller
 
         Public dB As New PessoaDbContext
+
+        Function Index() As ActionResult
+            Return View()
+        End Function
+
         Function Create() As ActionResult
             Return View()
         End Function
@@ -40,5 +45,12 @@ Namespace Controllers
         End Function
 
 
+        Function Destinatario(model As Pessoa) As ActionResult
+            Return View(model)
+        End Function
+
+        Function Pagina1() As ActionResult
+
+        End Function
     End Class
 End Namespace

@@ -3,7 +3,7 @@
 Public Class Pessoa
 
     Public Property Id() As Integer
-    Public Property Nome() As String
+    Public Property Nome() As Orgão
 
     Public Property Sobrenome() As String
 

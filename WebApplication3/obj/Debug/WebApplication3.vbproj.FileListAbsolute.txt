@@ -95,3 +95,4 @@ C:\Users\Servulo\source\repos\WebApplication3\WebApplication3\obj\Debug\WebAppli
 C:\Users\Servulo\source\repos\WebApplication3\WebApplication3\bin\System.Data.SqlClient.dll
 C:\Users\Servulo\source\repos\WebApplication3\WebApplication3\bin\System.Data.SqlClient.xml
 C:\Users\Servulo\source\repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.pessoa.resources
+C:\Users\Servulo\source\repos\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.orgao.resources

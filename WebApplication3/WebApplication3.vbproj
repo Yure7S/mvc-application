@@ -159,8 +159,8 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
-    <Compile Include="Controllers\HomeController.vb" />
     <Compile Include="Controllers\PessoaController.vb" />
+    <Compile Include="Enums\Orgão.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,6 +168,10 @@
       <DependentUpon>202303271510384_pessoa.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202303271510384_pessoa.vb" />
+    <Compile Include="Migrations\202303281342273_orgao.Designer.vb">
+      <DependentUpon>202303281342273_orgao.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303281342273_orgao.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="Models\Pessoa.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -190,6 +194,9 @@
     <EmbeddedResource Include="Migrations\202303271510384_pessoa.resx">
       <DependentUpon>202303271510384_pessoa.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303281342273_orgao.resx">
+      <DependentUpon>202303281342273_orgao.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -202,6 +209,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\logo_negativa.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -222,6 +230,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\form.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -230,6 +239,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Pessoa\Create.vbhtml" />
     <Content Include="Views\Pessoa\Delete.vbhtml" />
+    <Content Include="Views\Pessoa\Destinatario.vbhtml" />
+    <Content Include="Views\Pessoa\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -242,6 +253,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\style\style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -251,9 +263,6 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Views\_ViewStart.vbhtml" />
-    <Content Include="Views\Home\About.vbhtml" />
-    <Content Include="Views\Home\Contact.vbhtml" />
-    <Content Include="Views\Home\Index.vbhtml" />
     <Content Include="Views\Shared\Error.vbhtml" />
     <Content Include="Views\Shared\_Layout.vbhtml" />
     <Content Include="Views\Web.config" />
