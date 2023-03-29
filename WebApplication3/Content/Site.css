@@ -2,11 +2,13 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
+    padding-bottom: 200px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -66,4 +68,35 @@ footer #footer-ma {
 
 .show{
     display: block;
+}
+
+section .form-container {
+    width: 95%;
+    max-width: 500px;
+    margin: 100px auto 0px;
+}
+
+section .buttons{
+    gap: 15px;
+    width: fit-content;
+    margin: 40px auto 0px;
+    color: white;
+}
+
+section .form-boot {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 10px;
+    background-color: #FCFCFC;
+    border: 1px solid #cfcfcf;
+}
+
+section .form-boot *:not(label, h3, div){
+    width: 100%;
+    max-width: none;
+    margin: 2px 0px 20px;
+    padding: 8px 15px;
+    border: 1px solid #0a0a0a;
+    border-radius: 5px;
 }

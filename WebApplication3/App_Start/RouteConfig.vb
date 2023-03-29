@@ -12,7 +12,7 @@ Public Module RouteConfig
         routes.MapRoute(
             name:="Default",
             url:="{controller}/{action}/{id}",
-            defaults:=New With {.controller = "Pessoa", .action = "Index", .id = UrlParameter.Optional}
+            defaults:=New With {.controller = "Denuncias", .action = "Index", .id = UrlParameter.Optional}
         )
     End Sub
 End Module

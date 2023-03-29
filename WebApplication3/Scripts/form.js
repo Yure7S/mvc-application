@@ -34,30 +34,4 @@ function slide(i){
     }
 }
 
-//slide()
-
-//document.addEventListener("click", (event) => {
-//    let el = event.target
-//    let cont = 0
-
-//    if (el.classList.contains("avancar")){
-//        create.style.display = "block"
-//        dest.style.display = "none"
-
-//    }
-
-//})
-
-//avancar.addeventlistener("click", () => {
-//    create.style.display = "block"
-//    dest.style.display = "none"
-//    cont = 1
-//    init = false
-//})
-
-//voltar.addeventlistener("click", () => {
-//    create.style.display = "none"
-//    dest.style.display = "block"
-//    cont = 2
-//})
 
