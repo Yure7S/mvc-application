@@ -1,0 +1,106 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 200px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/* header-footer */
+header {
+    width: 100%;
+    background-color: #1659bf;
+    color: white;
+}
+
+    header img {
+        min-width: 400px;
+    }
+
+    header h1 a {
+        color: white;
+        font-size: 40px;
+    }
+
+footer {
+    position: absolute;
+    padding: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+    footer #footer-ma {
+        background-color: #1659bf;
+        display: flex;
+        justify-content: center;
+    }
+
+/* conteúdo */
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+section .form-container {
+    width: 95%;
+    max-width: 650px;
+    margin: 100px auto 0px;
+}
+
+section .buttons {
+    gap: 15px;
+    width: fit-content;
+    margin: 40px auto 0px;
+    color: white;
+}
+
+section .form-boot {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 10px;
+    background-color: #FCFCFC;
+    border: 1px solid #cfcfcf;
+}
+
+    section .form-boot *:not(label, h3, div) {
+        width: 100%;
+        max-width: none;
+        margin: 2px 0px 20px;
+        padding: 8px 15px;
+        border: 1px solid #0a0a0a;
+        border-radius: 4px;
+    }
+
+    section .form-boot *:focus:not(label, h3, div) {
+        border: 2px solid #3486eb;
+    }

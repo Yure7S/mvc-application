@@ -1,0 +1,92 @@
+﻿@model  Denuncia
+@{
+    ViewBag.Title = "Destinatario";
+}
+
+<section class="container-sm justify-content-center mt-n1">
+    <h2></h2>
+
+    <div class="form-container">
+        <span>Os campos com * são de preenchimento obrigatório</span>
+        @using (Html.BeginForm())
+        {
+            <div>
+
+                <div class="dest show form-boot">
+                    <label>Usuárioid*</label>
+                    @Html.DropDownList("UsuarioId", null, htmlAttributes: new { @class = "form-control" })
+                    <label>Órgão para o qual você quer enviar sua manifestação*</label>
+                    @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                    {
+                        new {Text= "Testando 01", Value="meu valor 01"},
+                        new {Text= "Testando 02", Value="meu valor 02"}
+                    }, "Value", "Text"), "Selecione")
+
+                    <label>Sobre qual assunto você quer falar</label>
+                    @Html.EditorFor(model => model.Assunto)
+                    <label>Sobre qual órgão você quer falar</label>
+                    @Html.EditorFor(model => model.OrgaoAssunto)
+                </div>
+
+                <div class="create hidden form-boot">
+
+                    <label>Descrição dos atos ou fatos*</label>
+                    @Html.TextAreaFor((model => model.Descricao))
+
+                    <div class="local-do-fato d-flex flex-column" flex>
+                        <h3>Local do fato</h3>
+                        <div class="d-flex gap-4">
+                            <div class="w-100">
+                                <label>UF</label>
+                                @Html.EditorFor(model => model.Uf)
+                            </div>
+                            <div class="w-100">
+                                <label>Município</label>
+                                @Html.EditorFor(model => model.Municipio)
+                            </div>
+                        </div>
+                        <div class="w-100">
+                            <label>Local</label>
+                            @Html.EditorFor(model => model.Local)
+                        </div>
+                    </div>
+
+                    <div class="envolvidos">
+                        <h3>Quais são os envolvidos do fato</h3>
+                        <label>Nome do envolvido</label>
+                        @Html.EditorFor(model => model.NomeEnvolvido)
+                        <label>Função do envolvido</label>
+                        @Html.EditorFor(model => model.FuncaoEnvolvido)
+                        <label>Órgão/Empresa</label>
+                        @Html.EditorFor(model => model.OrgaoEmpresa)
+                        <label>Data criação</label>
+                        @Html.EditorFor(model => model.DataPostagem)
+                    </div>
+
+                </div>
+
+                <div style="display: none;" class="summary hidden">
+                    <p>Minha página final</p>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Enviar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+        <div class="buttons d-flex">
+            <button onclick="slide(-1)" class="voltar btn btn-secondary">&lt;&lt; Voltar</button>
+            <button onclick="slide(1)" class="avancar btn btn-primary">Avançar &gt;&gt;</button>
+        </div>
+    </div>
+
+</section>
+
+
+
+<script src="../../Scripts/form.js"></script>
+
+
