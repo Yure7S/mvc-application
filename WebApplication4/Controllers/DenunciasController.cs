@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace WebApplication4.Controllers
 {
+    [Authorize]
     public class DenunciasController : Controller
     {
         private OuvidoriaDbContext db = new OuvidoriaDbContext();
@@ -36,6 +37,7 @@ namespace WebApplication4.Controllers
         }
 
         // GET: Denuncias/Create
+        
         public ActionResult Create()
         {
             ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome");
@@ -55,7 +57,6 @@ namespace WebApplication4.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
 
             ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome", denuncia.UsuarioId);
             return View(denuncia);

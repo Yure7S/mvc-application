@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using WebApplication4.ViewModels;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace WebApplication4.Controllers
 {
@@ -35,7 +37,7 @@ namespace WebApplication4.Controllers
         }
 
         // GET: Usuarios/Create
-        public ActionResult Create()
+        public ActionResult Cadastro()
         {
             return View();
         }
@@ -45,16 +47,60 @@ namespace WebApplication4.Controllers
         // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Email,Senha,DataCadastro")] Usuario usuario)
+        public ActionResult Cadastro([Bind(Include = "Id,Nome,Email,Senha,DataCadastro")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                db.Usuario.Add(usuario);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                Usuario usr = db.Usuario.FirstOrDefault(user => user.Email == usuario.Email);
+                if (usr != null)
+                {
+                    ModelState.AddModelError("", "Usuário já cadastrado");
+                }
+                else
+                {
+                    db.Usuario.Add(usuario);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
 
             return View(usuario);
+        }
+
+        // Login de usuário
+        public ActionResult RealizarLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RealizarLogin(LoginViewModel login)
+        {
+            if (ModelState.IsValid)
+            {
+                var getUser = db.Usuario.FirstOrDefault(user => user.Email == login.Email);
+
+                if (getUser != null)
+                {
+                    if (getUser.SenhaValida(login.Senha))
+                    {
+                        FormsAuthentication.SetAuthCookie(getUser.Id.ToString(), false);
+                        Session["Nome"] = getUser.Nome;
+                        Session["Email"] = getUser.Email;
+                        Session["Nome"] = getUser.Nome;
+                        return RedirectToAction("Index", "Denuncias");
+                    }
+
+                    ModelState.AddModelError("", "Email ou senha inválidos");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Usuário não cadastrado, realize o cadastro para acessar sua conta");
+                }
+
+            }
+
+            return View(login);
         }
 
         // GET: Usuarios/Edit/5

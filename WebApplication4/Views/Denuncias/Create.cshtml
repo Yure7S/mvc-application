@@ -3,7 +3,7 @@
     ViewBag.Title = "Destinatario";
 }
 
-<section class="container-sm justify-content-center mt-n1">
+<section id="form-create-complaint" class="container-sm justify-content-center mt-n1">
     <h2></h2>
 
     <div class="form-container">
@@ -12,55 +12,103 @@
         {
             <div>
 
-                <div class="dest show form-boot">
+                <div class="dest show form-frag">
                     <label>Usuárioid*</label>
                     @Html.DropDownList("UsuarioId", null, htmlAttributes: new { @class = "form-control" })
-                    <label>Órgão para o qual você quer enviar sua manifestação*</label>
+
+                    <div>
+                        <label>Órgão para o qual você quer enviar sua manifestação*</label>
+                        @Html.ValidationMessageFor(model => model.OrgaoDestino, "", new { @class = "text-danger" })
+                    </div>
                     @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
                     {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
                     }, "Value", "Text"), "Selecione")
 
-                    <label>Sobre qual assunto você quer falar</label>
-                    @Html.EditorFor(model => model.Assunto)
-                    <label>Sobre qual órgão você quer falar</label>
-                    @Html.EditorFor(model => model.OrgaoAssunto)
+
+                    <div>
+                        <label>Sobre qual assunto você quer falar</label>
+                        @Html.ValidationMessageFor(model => model.Assunto, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                    {
+                        new {Text= "Testando 01", Value="meu valor 01"},
+                        new {Text= "Testando 02", Value="meu valor 02"}
+                    }, "Value", "Text"), "Selecione")
+
+                    <div>
+                        <label>Sobre qual órgão você quer falar</label>
+                        @Html.ValidationMessageFor(model => model.OrgaoAssunto, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                    {
+                        new {Text= "Testando 01", Value="meu valor 01"},
+                        new {Text= "Testando 02", Value="meu valor 02"}
+                    }, "Value", "Text"), "Selecione")
                 </div>
 
-                <div class="create hidden form-boot">
+                <div class="create hidden form-frag">
 
-                    <label>Descrição dos atos ou fatos*</label>
+                    <div>
+                        <label>Descrição dos atos ou fatos*</label>
+                        @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                    </div>
                     @Html.TextAreaFor((model => model.Descricao))
 
                     <div class="local-do-fato d-flex flex-column" flex>
                         <h3>Local do fato</h3>
                         <div class="d-flex gap-4">
                             <div class="w-100">
-                                <label>UF</label>
-                                @Html.EditorFor(model => model.Uf)
+                                <div>
+                                    <label>UF</label>
+                                    @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                                {
+                                    new {Text= "MA", Value="Maranhão"},
+                                    new {Text= "SP", Value="São Paulo"}
+                                }, "Value", "Text"), "Selecione")
                             </div>
                             <div class="w-100">
-                                <label>Município</label>
-                                @Html.EditorFor(model => model.Municipio)
+                                <div>
+                                    <label>Município</label>
+                                    @Html.ValidationMessageFor(model => model.Municipio, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                                {
+                                    new {Text= "São Luis", Value="São Luis"},
+                                    new {Text= "Testando 02", Value="meu valor 02"}
+                                }, "Value", "Text"), "Selecione")
                             </div>
                         </div>
                         <div class="w-100">
-                            <label>Local</label>
+                            <div>
+                                <label>Local</label>
+                                @Html.ValidationMessageFor(model => model.Local, "", new { @class = "text-danger" })
+                            </div>
                             @Html.EditorFor(model => model.Local)
                         </div>
                     </div>
 
                     <div class="envolvidos">
                         <h3>Quais são os envolvidos do fato</h3>
-                        <label>Nome do envolvido</label>
+                        <div>
+                            <label>Nome do envolvido</label>
+                            @Html.ValidationMessageFor(model => model.NomeEnvolvido, "", new { @class = "text-danger" })
+                        </div>
                         @Html.EditorFor(model => model.NomeEnvolvido)
-                        <label>Função do envolvido</label>
+                        <div>
+                            <label>Função do envolvido</label>
+                            @Html.ValidationMessageFor(model => model.FuncaoEnvolvido, "", new { @class = "text-danger" })
+                        </div>
                         @Html.EditorFor(model => model.FuncaoEnvolvido)
-                        <label>Órgão/Empresa</label>
+                        <div>
+                            <label>Órgão/Empresa</label>
+                            @Html.ValidationMessageFor(model => model.OrgaoEmpresa, "", new { @class = "text-danger" })
+                        </div>
                         @Html.EditorFor(model => model.OrgaoEmpresa)
-                        <label>Data criação</label>
-                        @Html.EditorFor(model => model.DataPostagem)
+
                     </div>
 
                 </div>
