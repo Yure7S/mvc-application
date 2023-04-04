@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication4.Util;
+using System.Threading.Tasks;
 
 namespace WebApplication4.Controllers
 {
@@ -50,7 +51,7 @@ namespace WebApplication4.Controllers
         // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
         // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(Denuncia denuncia)
+        public async Task<ActionResult> Create(Denuncia denuncia)
         {
            
             if (ModelState.IsValid)
@@ -61,9 +62,10 @@ namespace WebApplication4.Controllers
                 denuncia.UsuarioId = usuario.Id;
 
                 db.Denuncia.Add(denuncia);
-
-                EnvioEmail.sendEmail(denuncia.Usuario, denuncia);
-
+                EnvioEmail envio = new EnvioEmail();
+                await Task.Factory.StartNew(() => envio.sendEmail(denuncia.Usuario, denuncia));
+                
+               
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

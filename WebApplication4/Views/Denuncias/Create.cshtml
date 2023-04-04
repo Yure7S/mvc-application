@@ -1,7 +1,8 @@
 ﻿@model  Denuncia
 @{
     ViewBag.Title = "Destinatario";
-}
+    }
+
 
 <section id="form-create-complaint" class="container-sm justify-content-center mt-n1">
     <h2></h2>
@@ -92,19 +93,19 @@
                         <h3>Quais são os envolvidos do fato</h3>
                         <div>
                             <label>Nome do envolvido</label>
-                            @Html.ValidationMessageFor(model => model.NomeEnvolvido, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Envolvido.Nome, "", new { @class = "text-danger" })
                         </div>
-                        @Html.EditorFor(model => model.NomeEnvolvido)
+                        @Html.EditorFor(model => model.Envolvido.Nome)
                         <div>
                             <label>Função do envolvido</label>
-                            @Html.ValidationMessageFor(model => model.FuncaoEnvolvido, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Envolvido.Funcao, "", new { @class = "text-danger" })
                         </div>
-                        @Html.EditorFor(model => model.FuncaoEnvolvido)
+                        @Html.EditorFor(model => model.Envolvido.Funcao)
                         <div>
                             <label>Órgão/Empresa</label>
-                            @Html.ValidationMessageFor(model => model.OrgaoEmpresa, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Envolvido.Empresa, "", new { @class = "text-danger" })
                         </div>
-                        @Html.EditorFor(model => model.OrgaoEmpresa)
+                        @Html.EditorFor(model => model.Envolvido.Empresa)
 
                     </div>
 

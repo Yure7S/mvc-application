@@ -2,17 +2,14 @@
 using System.IO;
 using System.Net.Mail;
 using System.Diagnostics;
-
+using System.Threading.Tasks;
 
 namespace WebApplication4.Util
 {
     public class EnvioEmail
     {
-        public static void sendEmail(Usuario user, Denuncia denuncia)
+        public Task sendEmail(Usuario user, Denuncia denuncia)
         {
-
-            
-
             try
             {
                 var reader = new StreamReader("C:\\Users\\Servulo\\source\\repos\\WebApplication4\\WebApplication4\\Template Email\\TempEmail.html");
@@ -36,12 +33,13 @@ namespace WebApplication4.Util
                 mail.IsBodyHtml = true;
                 mail.Priority = MailPriority.High;
 
-                client.Send(mail);
-                Debug.WriteLine("Enviado");
+               return client.SendMailAsync(mail);
+
             }
             catch(Exception e)
             {
                 Debug.WriteLine(e);
+                return null;
             }
         }
     }

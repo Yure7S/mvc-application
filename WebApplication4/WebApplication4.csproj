@@ -135,17 +135,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303301648119_initial.cs" />
-    <Compile Include="Migrations\202303301648119_initial.Designer.cs">
-      <DependentUpon>202303301648119_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202304031618158_updatemodel.cs" />
-    <Compile Include="Migrations\202304031618158_updatemodel.Designer.cs">
-      <DependentUpon>202304031618158_updatemodel.cs</DependentUpon>
+    <Compile Include="Migrations\202304041458273_initial.cs" />
+    <Compile Include="Migrations\202304041458273_initial.Designer.cs">
+      <DependentUpon>202304041458273_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\OuvidoriaDbContext.cs" />
     <Compile Include="Models\Denuncia.cs" />
+    <Compile Include="Models\Envolvido.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Util\EnvioEmail.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -203,15 +200,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuarios\Cadastro.cshtml" />
-    <Content Include="Views\Backup\Denuncias\Create.cshtml" />
-    <Content Include="Views\Backup\Denuncias\Delete.cshtml" />
-    <Content Include="Views\Backup\Denuncias\Details.cshtml" />
-    <Content Include="Views\Backup\Denuncias\Edit.cshtml" />
-    <Content Include="Views\Backup\Denuncias\Index.cshtml" />
     <Content Include="Views\Denuncias\Create.cshtml" />
     <Content Include="Views\Denuncias\Delete.cshtml" />
-    <Content Include="Views\Denuncias\Index.cshtml" />
     <Content Include="Views\Usuarios\RealizarLogin.cshtml" />
+    <Content Include="Views\Denuncias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -230,11 +222,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202303301648119_initial.resx">
-      <DependentUpon>202303301648119_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202304031618158_updatemodel.resx">
-      <DependentUpon>202304031618158_updatemodel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304041458273_initial.resx">
+      <DependentUpon>202304041458273_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

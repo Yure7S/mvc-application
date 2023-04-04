@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
+
 public class Denuncia
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -32,15 +33,6 @@ public class Denuncia
 
     [Required(ErrorMessage = "Campo obrigatório")]
     public string Local { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório")]
-    public string NomeEnvolvido { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório")]
-    public string FuncaoEnvolvido { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório")]
-    public string OrgaoEmpresa { get; set; }
 
     [Required()]
     public DateTime DataPostagem { get; set; }
