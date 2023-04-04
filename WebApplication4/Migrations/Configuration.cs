@@ -9,7 +9,7 @@ namespace WebApplication4.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(OuvidoriaDbContext context)

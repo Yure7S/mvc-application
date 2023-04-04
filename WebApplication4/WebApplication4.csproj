@@ -129,15 +129,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\DenunciasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Enums\Orgao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202304041458273_initial.cs" />
-    <Compile Include="Migrations\202304041458273_initial.Designer.cs">
-      <DependentUpon>202304041458273_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202304041558175_initial.cs" />
+    <Compile Include="Migrations\202304041558175_initial.Designer.cs">
+      <DependentUpon>202304041558175_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\OuvidoriaDbContext.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Models\Envolvido.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Util\EnvioEmail.cs" />
+    <Compile Include="ViewModels\DenunciaViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -203,7 +205,7 @@
     <Content Include="Views\Denuncias\Create.cshtml" />
     <Content Include="Views\Denuncias\Delete.cshtml" />
     <Content Include="Views\Usuarios\RealizarLogin.cshtml" />
-    <Content Include="Views\Denuncias\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -222,8 +224,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202304041458273_initial.resx">
-      <DependentUpon>202304041458273_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202304041558175_initial.resx">
+      <DependentUpon>202304041558175_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

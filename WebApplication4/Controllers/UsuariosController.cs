@@ -88,7 +88,7 @@ namespace WebApplication4.Controllers
                         Session["Nome"] = getUser.Nome;
                         Session["Email"] = getUser.Email;
                         Session["Id"] = getUser.Id;
-                        return RedirectToAction("Index", "Denuncias");
+                        return RedirectToAction("Index", "Home");
                     }
                 
                     ModelState.AddModelError("", "Email ou senha inválidos");
@@ -109,7 +109,7 @@ namespace WebApplication4.Controllers
             FormsAuthentication.SignOut();
             Session.Clear();
 
-            return RedirectToAction("Index", "Denuncias");
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Usuarios/Edit/5

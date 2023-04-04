@@ -1,11 +1,11 @@
 ﻿const summary = document.querySelector(".summary")
+const listaEnvolvidos = document.querySelector(".lista-envolvidos")
 const create = document.querySelector(".create")
 const dest = document.querySelector(".dest")
 const voltar = document.querySelector(".voltar")
 const avancar = document.querySelector(".avancar")
 console.log("testando")
 
-/* Fluxo de formulários */
 let count = 1
 function slide(i, e) {
 
@@ -36,11 +36,15 @@ function slide(i, e) {
     }
 }
 
-document.addEventListener("click", (e) => {
-    e = e.target
-    e.preventDefault
-})
+function adicionar() {
+    /* Adicionar envolvido */
+    const nome = document.querySelector("#Envolvido_Nome")
+    const funcao = document.querySelector("#Envolvido_Funcao")
+    const empresa = document.querySelector("#Envolvido_Empresa")
+    const listaEnvolvidos = document.querySelector(".lista-envolvidos")
 
-/* Definição do resumo */
+    listaEnvolvidos.innerHTML += `<li><strong>${nome.value}</strong><strong>${funcao.value}</strong><strong>${empresa.value}</strong></li>`
+
+}
 
 

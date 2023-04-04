@@ -17,13 +17,6 @@ namespace WebApplication4.Controllers
     {
         private OuvidoriaDbContext db = new OuvidoriaDbContext();
 
-        // GET: Denuncias
-        public ActionResult Index()
-        {
-            var denuncia = db.Denuncia.Include(d => d.Usuario);
-            return View(denuncia.ToList());
-        }
-
         // GET: Denuncias/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -51,26 +44,28 @@ namespace WebApplication4.Controllers
         // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
         // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<ActionResult> Create(Denuncia denuncia)
+        public async Task<ActionResult> Create(Denuncia denuncia, Envolvido envolvido)
         {
            
             if (ModelState.IsValid)
             {
+                
                 // Capturando o ID do usuário
                 string usuarioAutenticado = User.Identity.Name;
                 Usuario usuario = db.Usuario.FirstOrDefault(x => x.Email == usuarioAutenticado);
                 denuncia.UsuarioId = usuario.Id;
+                envolvido.DenunciaId = denuncia.Id;
 
                 db.Denuncia.Add(denuncia);
+                db.Envolvido.Add(envolvido);
                 EnvioEmail envio = new EnvioEmail();
                 await Task.Factory.StartNew(() => envio.sendEmail(denuncia.Usuario, denuncia));
                 
-               
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome", denuncia.UsuarioId);
+            /*ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome", denuncia.Denuncia.UsuarioId);*/
             return View(denuncia);
         }
 
@@ -101,7 +96,7 @@ namespace WebApplication4.Controllers
             {
                 db.Entry(denuncia).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome", denuncia.UsuarioId);
             return View(denuncia);
@@ -130,7 +125,7 @@ namespace WebApplication4.Controllers
             Denuncia denuncia = db.Denuncia.Find(id);
             db.Denuncia.Remove(denuncia);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         protected override void Dispose(bool disposing)

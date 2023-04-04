@@ -1,4 +1,4 @@
-﻿@model  Denuncia
+﻿@model  DenunciaViewModel
 @{
     ViewBag.Title = "Destinatario";
     }
@@ -15,21 +15,20 @@
 
                 <div class="dest show form-frag">
 
-
                     <div>
                         <label>Órgão para o qual você quer enviar sua manifestação*</label>
-                        @Html.ValidationMessageFor(model => model.OrgaoDestino, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Denuncia.OrgaoDestino, "", new { @class = "text-danger" })
                     </div>
-                    @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                    @Html.DropDownListFor(model => model.Denuncia.OrgaoDestino, new SelectList(new[]
                     {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
                     }, "Value", "Text"), "Selecione")
                     <div>
                         <label>Sobre qual assunto você quer falar</label>
-                        @Html.ValidationMessageFor(model => model.Assunto, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Denuncia.Assunto, "", new { @class = "text-danger" })
                     </div>
-                    @Html.DropDownListFor(model => model.Assunto, new SelectList(new[]
+                    @Html.DropDownListFor(model => model.Denuncia.Assunto, new SelectList(new[]
                     {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
@@ -37,9 +36,9 @@
 
                     <div>
                         <label>Sobre qual órgão você quer falar</label>
-                        @Html.ValidationMessageFor(model => model.OrgaoAssunto, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Denuncia.OrgaoAssunto, "", new { @class = "text-danger" })
                     </div>
-                    @Html.DropDownListFor(model => model.OrgaoAssunto, new SelectList(new[]
+                    @Html.DropDownListFor(model => model.Denuncia.OrgaoAssunto, new SelectList(new[]
                     {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
@@ -50,9 +49,9 @@
 
                     <div>
                         <label>Descrição dos atos ou fatos*</label>
-                        @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Denuncia.Descricao, "", new { @class = "text-danger" })
                     </div>
-                    @Html.TextAreaFor((model => model.Descricao))
+                    @Html.TextAreaFor((model => model.Denuncia.Descricao))
 
                     <div class="local-do-fato d-flex flex-column" flex>
                         <h3>Local do fato</h3>
@@ -60,9 +59,9 @@
                             <div class="w-100">
                                 <div>
                                     <label>UF</label>
-                                    @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.Denuncia.Uf, "", new { @class = "text-danger" })
                                 </div>
-                                @Html.DropDownListFor(model => model.Uf, new SelectList(new[]
+                                @Html.DropDownListFor(model => model.Denuncia.Uf, new SelectList(new[]
                                 {
                                     new {Text= "MA", Value="Maranhão"},
                                     new {Text= "SP", Value="São Paulo"}
@@ -71,9 +70,9 @@
                             <div class="w-100">
                                 <div>
                                     <label>Município</label>
-                                    @Html.ValidationMessageFor(model => model.Municipio, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.Denuncia.Municipio, "", new { @class = "text-danger" })
                                 </div>
-                                @Html.DropDownListFor(model => model.Municipio, new SelectList(new[]
+                                @Html.DropDownListFor(model => model.Denuncia.Municipio, new SelectList(new[]
                                 {
                                     new {Text= "São Luis", Value="São Luis"},
                                     new {Text= "Testando 02", Value="meu valor 02"}
@@ -83,9 +82,9 @@
                         <div class="w-100">
                             <div>
                                 <label>Local</label>
-                                @Html.ValidationMessageFor(model => model.Local, "", new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(model => model.Denuncia.Local, "", new { @class = "text-danger" })
                             </div>
-                            @Html.EditorFor(model => model.Local)
+                            @Html.EditorFor(model => model.Denuncia.Local)
                         </div>
                     </div>
 
@@ -93,22 +92,31 @@
                         <h3>Quais são os envolvidos do fato</h3>
                         <div>
                             <label>Nome do envolvido</label>
-                            @Html.ValidationMessageFor(model => model.Envolvido.Nome, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Envolvido.Nome, "", new { @class = "text-danger " })
                         </div>
-                        @Html.EditorFor(model => model.Envolvido.Nome)
+                        @Html.EditorFor(model => model.Envolvido.Nome, new { @class = "dado-envolvido nome" })
                         <div>
                             <label>Função do envolvido</label>
-                            @Html.ValidationMessageFor(model => model.Envolvido.Funcao, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Envolvido.Funcao, "", new { @class = "text-danger " })
                         </div>
-                        @Html.EditorFor(model => model.Envolvido.Funcao)
+                        @Html.EditorFor(model => model.Envolvido.Funcao, new { @class = "dado-envolvido funcao" })
                         <div>
                             <label>Órgão/Empresa</label>
-                            @Html.ValidationMessageFor(model => model.Envolvido.Empresa, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Envolvido.Empresa, "", new { @class = "text-danger " })
                         </div>
-                        @Html.EditorFor(model => model.Envolvido.Empresa)
+                        @Html.EditorFor(model => model.Envolvido.Empresa, new { @class = "dado-envolvido empresa" })
 
                     </div>
 
+                    <div class="grupo-envolvidos">
+                        <div class="container">
+                            <h3>Lista de Envolvidos Incluídos</h3>
+                            <div class="head-list"><strong>Nome</strong><strong>Função</strong><strong>Órgão</strong><strong>Ações</strong></div>
+                            <ul class="lista-envolvidos">
+                                <li><strong>Excluir</strong><strong>Meu nome</strong><strong>minha função</strong><strong>orgão</strong></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="summary hidden">
@@ -147,9 +155,9 @@
         }
 
         <div class="buttons d-flex">
+            <button onclick="adicionar()" class="btn-add-envolvido">envolvido</button>
             <button onclick="slide(-1)" class="interacao voltar btn btn-secondary">&lt;&lt; Voltar</button>
             <button onclick="slide(1)" class="interacao avancar btn btn-primary">Avançar &gt;&gt;</button>
-
         </div>
 
     </div>
