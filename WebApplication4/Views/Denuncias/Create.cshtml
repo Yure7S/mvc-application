@@ -13,8 +13,7 @@
             <div>
 
                 <div class="dest show form-frag">
-                    <label>Usuárioid*</label>
-                    @Html.DropDownList("UsuarioId", null, htmlAttributes: new { @class = "form-control" })
+
 
                     <div>
                         <label>Órgão para o qual você quer enviar sua manifestação*</label>
@@ -25,13 +24,11 @@
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
                     }, "Value", "Text"), "Selecione")
-
-
                     <div>
                         <label>Sobre qual assunto você quer falar</label>
                         @Html.ValidationMessageFor(model => model.Assunto, "", new { @class = "text-danger" })
                     </div>
-                    @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                    @Html.DropDownListFor(model => model.Assunto, new SelectList(new[]
                     {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
@@ -41,7 +38,7 @@
                         <label>Sobre qual órgão você quer falar</label>
                         @Html.ValidationMessageFor(model => model.OrgaoAssunto, "", new { @class = "text-danger" })
                     </div>
-                    @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                    @Html.DropDownListFor(model => model.OrgaoAssunto, new SelectList(new[]
                     {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
@@ -64,7 +61,7 @@
                                     <label>UF</label>
                                     @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
                                 </div>
-                                @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                                @Html.DropDownListFor(model => model.Uf, new SelectList(new[]
                                 {
                                     new {Text= "MA", Value="Maranhão"},
                                     new {Text= "SP", Value="São Paulo"}
@@ -75,7 +72,7 @@
                                     <label>Município</label>
                                     @Html.ValidationMessageFor(model => model.Municipio, "", new { @class = "text-danger" })
                                 </div>
-                                @Html.DropDownListFor(model => model.OrgaoDestino, new SelectList(new[]
+                                @Html.DropDownListFor(model => model.Municipio, new SelectList(new[]
                                 {
                                     new {Text= "São Luis", Value="São Luis"},
                                     new {Text= "Testando 02", Value="meu valor 02"}
@@ -113,22 +110,47 @@
 
                 </div>
 
-                <div style="display: none;" class="summary hidden">
-                    <p>Minha página final</p>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Enviar" class="btn btn-default" />
-                        </div>
+                <div class="summary hidden">
+                    <p>Resumo da sua manifestação</p>
+
+                    <div class="filtro">
+                        <div><strong>Tipo de manifstação</strong><span></span></div>
+                        <div><strong>Órgão destinatário</strong><span></span></div>
+                        <div><strong>Órgão interesse</strong><span></span></div>
+                        <div><strong>Assunto</strong><span></span></div>
+                        <div><strong>Local do fato</strong><span></span></div>
                     </div>
+
+                    <strong>Descrição dos atos ou fatos</strong>
+                    <p></p>
+
+                    <strong>Anexos Originais</strong>
+                    <p></p>
+
+                    <strong>Envolvidos</strong>
+                    <p></p>
+
+                    <strong>Campos adicionais</strong>
+                    <p></p>
+
                 </div>
 
             </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Enviar" class="btn btn-default" />
+                </div>
+            </div>
+
         }
 
         <div class="buttons d-flex">
-            <button onclick="slide(-1)" class="voltar btn btn-secondary">&lt;&lt; Voltar</button>
-            <button onclick="slide(1)" class="avancar btn btn-primary">Avançar &gt;&gt;</button>
+            <button onclick="slide(-1)" class="interacao voltar btn btn-secondary">&lt;&lt; Voltar</button>
+            <button onclick="slide(1)" class="interacao avancar btn btn-primary">Avançar &gt;&gt;</button>
+
         </div>
+
     </div>
 
 </section>

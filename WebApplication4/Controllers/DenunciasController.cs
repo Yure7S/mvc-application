@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication4.Util;
 
 namespace WebApplication4.Controllers
 {
@@ -48,12 +50,20 @@ namespace WebApplication4.Controllers
         // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
         // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Id,UsuarioId,OrgaoDestino,Assunto,OrgaoAssunto,Descricao,Uf,Municipio,Local,NomeEnvolvido,FuncaoEnvolvido,OrgaoEmpresa,DataPostagem")] Denuncia denuncia)
+        public ActionResult Create(Denuncia denuncia)
         {
+           
             if (ModelState.IsValid)
             {
-                denuncia.Id = Guid.NewGuid();
+                // Capturando o ID do usuário
+                string usuarioAutenticado = User.Identity.Name;
+                Usuario usuario = db.Usuario.FirstOrDefault(x => x.Email == usuarioAutenticado);
+                denuncia.UsuarioId = usuario.Id;
+
                 db.Denuncia.Add(denuncia);
+
+                EnvioEmail.sendEmail(denuncia.Usuario, denuncia);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -83,7 +93,7 @@ namespace WebApplication4.Controllers
         // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UsuarioId,OrgaoDestino,Assunto,OrgaoAssunto,Descricao,Uf,Municipio,Local,NomeEnvolvido,FuncaoEnvolvido,OrgaoEmpresa,DataPostagem")] Denuncia denuncia)
+        public ActionResult Edit(Denuncia denuncia)
         {
             if (ModelState.IsValid)
             {

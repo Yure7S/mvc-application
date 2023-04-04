@@ -13,6 +13,8 @@ public class Usuario
 
     [EmailAddress(ErrorMessage = "O email informado no campo não é válido")]
     [Required(ErrorMessage = "Email inválido")]
+    [Index(IsUnique = true)]
+    [StringLength(128)]
     public string Email { get; set; }
 
     [Required(ErrorMessage = "Senha inválida")]

@@ -92,3 +92,4 @@ C:\Users\Servulo\source\repos\WebApplication4\WebApplication4\bin\System.Data.Sq
 C:\Users\Servulo\source\repos\WebApplication4\WebApplication4\obj\Debug\WebApplication4.Migrations.initial.resources
 C:\Users\Servulo\source\repos\WebApplication4\WebApplication4\obj\Debug\WebApplication4.csproj.GenerateResource.cache
 C:\Users\Servulo\source\repos\WebApplication4\WebApplication4\obj\Debug\WebApplication4.csproj.AssemblyReference.cache
+C:\Users\Servulo\source\repos\WebApplication4\WebApplication4\obj\Debug\WebApplication4.Migrations.updatemodel.resources

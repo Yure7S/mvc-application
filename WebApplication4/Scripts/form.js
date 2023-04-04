@@ -5,8 +5,10 @@ const voltar = document.querySelector(".voltar")
 const avancar = document.querySelector(".avancar")
 console.log("testando")
 
+/* Fluxo de formulários */
 let count = 1
-function slide(i){
+function slide(i, e) {
+
     count += i
     console.log(count)
     switch (count) {
@@ -33,5 +35,12 @@ function slide(i){
             alert("erro")
     }
 }
+
+document.addEventListener("click", (e) => {
+    e = e.target
+    e.preventDefault
+})
+
+/* Definição do resumo */
 
 

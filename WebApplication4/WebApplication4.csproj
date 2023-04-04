@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DenunciasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="Enums\Orgao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,10 +139,15 @@
     <Compile Include="Migrations\202303301648119_initial.Designer.cs">
       <DependentUpon>202303301648119_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304031618158_updatemodel.cs" />
+    <Compile Include="Migrations\202304031618158_updatemodel.Designer.cs">
+      <DependentUpon>202304031618158_updatemodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context\OuvidoriaDbContext.cs" />
     <Compile Include="Models\Denuncia.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Util\EnvioEmail.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -183,6 +189,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Template Email\img\logo.png" />
+    <Content Include="Template Email\TempEmail.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -224,6 +232,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202303301648119_initial.resx">
       <DependentUpon>202303301648119_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304031618158_updatemodel.resx">
+      <DependentUpon>202304031618158_updatemodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

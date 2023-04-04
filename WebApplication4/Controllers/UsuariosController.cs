@@ -84,13 +84,13 @@ namespace WebApplication4.Controllers
                 {
                     if (getUser.SenhaValida(login.Senha))
                     {
-                        FormsAuthentication.SetAuthCookie(getUser.Id.ToString(), false);
+                        FormsAuthentication.SetAuthCookie(getUser.Email, false);
                         Session["Nome"] = getUser.Nome;
                         Session["Email"] = getUser.Email;
-                        Session["Nome"] = getUser.Nome;
+                        Session["Id"] = getUser.Id;
                         return RedirectToAction("Index", "Denuncias");
                     }
-
+                
                     ModelState.AddModelError("", "Email ou senha inválidos");
                 }
                 else
@@ -100,7 +100,16 @@ namespace WebApplication4.Controllers
 
             }
 
-            return View(login);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Logout() 
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+
+            return RedirectToAction("Index", "Denuncias");
         }
 
         // GET: Usuarios/Edit/5
