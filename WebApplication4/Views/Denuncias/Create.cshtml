@@ -90,31 +90,53 @@
 
                     <div class="envolvidos">
                         <h3>Quais são os envolvidos do fato</h3>
-                        <div>
-                            <label>Nome do envolvido</label>
-                            @Html.ValidationMessageFor(model => model.Envolvido.Nome, "", new { @class = "text-danger " })
+                        <div class="form-master">
+                            <div>
+                                <label>Nome do envolvido</label>
+                                <span class="field-validation-valid text-danger "></span>
+                            </div>
+                            <input class="text-box single-line" type="text" />
+                            <div>
+                                <label>Função do envolvido</label>
+                                <span class="field-validation-valid text-danger "></span>
+                            </div>
+                            <input class="text-box single-line" type="text" />
+                            <div>
+                                <label>Órgão/Empresa</label>
+                                <span class="field-validation-valid text-danger "></span>
+                            </div>
+                            <input class="text-box single-line" type="text" />
                         </div>
-                        @Html.EditorFor(model => model.Envolvido.Nome, new { @class = "dado-envolvido nome" })
-                        <div>
-                            <label>Função do envolvido</label>
-                            @Html.ValidationMessageFor(model => model.Envolvido.Funcao, "", new { @class = "text-danger " })
+                        <div class="container-form-envolvidos">
+                            <div class="box-form">
+
+                                <div>
+                                    <label>Nome do envolvido</label>
+                                    @Html.ValidationMessageFor(model => model.ListaEnvolvidos[0].Nome, "", new { @class = "text-danger " })
+                                </div>
+                                @Html.EditorFor(model => model.ListaEnvolvidos[0].Nome, new { @class = "dado-envolvido nome" })
+                                <div>
+                                    <label>Função do envolvido</label>
+                                    @Html.ValidationMessageFor(model => model.ListaEnvolvidos[0].Funcao, "", new { @class = "text-danger " })
+                                </div>
+                                @Html.EditorFor(model => model.ListaEnvolvidos[0].Funcao, new { @class = "dado-envolvido funcao" })
+                                <div>
+                                    <label>Órgão/Empresa</label>
+                                    @Html.ValidationMessageFor(model => model.ListaEnvolvidos[0].Empresa, "", new { @class = "text-danger " })
+                                </div>
+                                @Html.EditorFor(model => model.ListaEnvolvidos[0].Empresa, new { @class = "dado-envolvido empresa" })
+                            </div>
                         </div>
-                        @Html.EditorFor(model => model.Envolvido.Funcao, new { @class = "dado-envolvido funcao" })
-                        <div>
-                            <label>Órgão/Empresa</label>
-                            @Html.ValidationMessageFor(model => model.Envolvido.Empresa, "", new { @class = "text-danger " })
-                        </div>
-                        @Html.EditorFor(model => model.Envolvido.Empresa, new { @class = "dado-envolvido empresa" })
+
                         <button type="button" class="btn-add-envolvido">Adicionar envolvido</button>
                     </div>
 
+                    @* Listagem de envolvidos *@
                     <div class="hidden grupo-envolvidos">
                         <div class="container">
                             <h3>Lista de Envolvidos Incluídos</h3>
                             <div class="head-list"><div class="item"><strong>Nome</strong></div><div class="item"><strong>Função</strong></div><div class="item"><strong>Órgão</strong></div><strong>Ações</strong></div>
-                            <ul class="lista-envolvidos">
-                                
-                            </ul>
+                            <ul class="lista-envolvidos"></ul>
                         </div>
                     </div>
                 </div>
@@ -152,10 +174,139 @@
                 <input type="submit" value="Enviar" class="enviar btn btn-primary hidden " />
             </div>
 
-         }
+        }
 
     </div>
 
+    <script>
+        // Navegação entre formulários
+        const summary = document.querySelector(".summary")
+        const create = document.querySelector(".create")
+        const dest = document.querySelector(".dest")
+        const voltar = document.querySelector(".voltar")
+        const avancar = document.querySelector(".avancar")
+        const enviar = document.querySelector(".enviar")
+        // Listar envolvido
+        const grupoEnvolvidos = document.querySelector(".grupo-envolvidos")
+        const campos = Array.from(document.querySelectorAll(".envolvidos .form-master input"))
+        const listaEnvolvidos = document.querySelector(".lista-envolvidos")
+        // const itensListaEnvolvidos = Array.from(document.querySelector(".lista-envolvidos li"))
+        const btnAdd = document.querySelector(".btn-add-envolvido")
+        const btnDelete = document.querySelector("li div .excluir-envolvido")
+        // Adicionar envolvido
+        // const itensEnvolvidosForm = Array.from(document.querySelectorAll(".envolvidos .box-form"))
+        const containerFormEnvolvidos = document.querySelector(".container-form-envolvidos")
+
+        // nome / função / orgão
+        let packEnvolvidos = []
+
+        let count = 1
+        function slide(i, e) {
+
+            count += i
+            console.log(count)
+            switch (count) {
+                case 0:
+                    window.location.href = "/";
+                    break
+                case 1:
+                    dest.classList.replace("hidden", "show")
+                    create.classList.replace("show", "hidden")
+                    break
+                case 2:
+                    dest.classList.replace("show", "hidden");
+                    create.classList.replace("hidden", "show")
+                    avancar.classList.remove("hidden")
+                    summary.classList.replace("show", "hidden")
+                    enviar.classList.replace("show", "hidden")
+                    break
+                case 3:
+                    create.classList.replace("show", "hidden")
+                    summary.classList.replace("hidden", "show")
+                    avancar.classList.add("hidden")
+                    enviar.classList.replace("hidden", "show")
+                    break
+                default:
+                    alert("erro")
+            }
+        }
+
+
+        // Listar envolvido
+        btnAdd.addEventListener("click", () => { // Listando envolvido
+
+            packEnvolvidos.push({
+                nome: campos[0].value,
+                funcao: campos[1].value,
+                orgao: campos[2].value
+            })
+
+            listaEnvolvidos.innerHTML += `<li><div class="item"><span>${packEnvolvidos[packEnvolvidos.length - 1].nome}</span></div><div class="item"><span>${packEnvolvidos[packEnvolvidos.length - 1].funcao}</span></div><div class="item"><span>${packEnvolvidos[packEnvolvidos.length - 1].orgao}</span></div><button class="excluir-envolvido">Excluir</button></li>`
+
+            grupoEnvolvidos.classList.replace("hidden", "show")
+
+            criarFormularioEnvolvido()
+            for (let item of campos) {
+                item.value = ""
+            }
+
+            console.log(listaEnvolvidos)
+            console.log(itensEnvolvidosForm)
+        })
+
+        document.addEventListener("click", (e) => { // Excluindo envolvido
+            e = e.target
+            if (e.classList.contains("excluir-envolvido")) {
+                e.parentElement.remove()
+            }
+        })
+
+
+        // Adicionar envolvido
+        let indice = 0
+        const criarFormularioEnvolvido = () => {
+            ++indice
+            containerFormEnvolvidos.innerHTML += `<div>
+    <label>Nome do envolvido</label>
+    @Html.ValidationMessageFor(model => model.ListaEnvolvidos[0].Nome, "", new { @class = "text-danger " })
+</div>
+@Html.EditorFor(model => model.ListaEnvolvidos[0].Nome, new { @class = "dado-envolvido nome" })
+<div>
+    <label>Função do envolvido</label>
+    @Html.ValidationMessageFor(model => model.ListaEnvolvidos[0].Funcao, "", new { @class = "text-danger " })
+</div>
+@Html.EditorFor(model => model.ListaEnvolvidos[0].Funcao, new { @class = "dado-envolvido funcao" })
+<div>
+    <label>Órgão/Empresa</label>
+    @Html.ValidationMessageFor(model => model.ListaEnvolvidos[0].Empresa, "", new { @class = "text-danger " })
+</div>
+@Html.EditorFor(model => model.ListaEnvolvidos[0].Empresa, new { @class = "dado-envolvido empresa" })`
+
+
+        }
+    </script>
+
 </section>
 
-<script src="../../Scripts/form.js"></script>
+@*<script src="../../Scripts/form.js"></script>*@
+
+
+
+
+@*<div class="box-form">
+    <div>
+        <label>Nome do envolvido</label>
+        <span class="field-validation-valid text-danger " data-valmsg-for="ListaEnvolvidos[${indice}].Nome" data-valmsg-replace="true"></span>
+    </div>
+    <input class="text-box single-line" id="ListaEnvolvidos_0__Nome" name="ListaEnvolvidos[${indice}].Nome" type="text" value="${packEnvolvidos[packEnvolvidos.length - 1].nome}" />
+    <div>
+        <label>Função do envolvido</label>
+        <span class="field-validation-valid text-danger " data-valmsg-for="ListaEnvolvidos[${indice}].Funcao" data-valmsg-replace="true"></span>
+    </div>
+    <input class="text-box single-line" id="ListaEnvolvidos_0__Funcao" name="ListaEnvolvidos[${indice}].Funcao" type="text" value="${packEnvolvidos[packEnvolvidos.length - 1].funcao}" />
+    <div>
+        <label>Órgão/Empresa</label>
+        <span class="field-validation-valid text-danger " data-valmsg-for="ListaEnvolvidos[${indice}].Empresa" data-valmsg-replace="true"></span>
+    </div>
+    <input class="text-box single-line" id="ListaEnvolvidos_0__Empresa" name="ListaEnvolvidos[${indice}].Empresa" type="text" value="${packEnvolvidos[packEnvolvidos.length - 1].orgao}" />
+</div>*@

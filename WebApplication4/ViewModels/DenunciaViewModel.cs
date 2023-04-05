@@ -10,6 +10,6 @@ public class DenunciaViewModel
 
     public Envolvido Envolvido { get; set; }
 
-    // public List<DenunciaViewModel> ListaEnvolvidos = new List<DenunciaViewModel>();
+    public List<Envolvido> ListaEnvolvidos { get; set; }
 
 }

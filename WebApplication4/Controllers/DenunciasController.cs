@@ -40,24 +40,27 @@ namespace WebApplication4.Controllers
             return View();
         }
 
-        // POST: Denuncias/Create
-        // Para se proteger de mais ataques, habilite as propriedades específicas às quais você quer se associar. Para 
-        // obter mais detalhes, veja https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<ActionResult> Create(Denuncia denuncia, Envolvido envolvido)
+        public async Task<ActionResult> Create(Denuncia denuncia, List<Envolvido> ListaEnvolvidos)
         {
            
             if (ModelState.IsValid)
             {
                 
+
                 // Capturando o ID do usuário
                 string usuarioAutenticado = User.Identity.Name;
                 Usuario usuario = db.Usuario.FirstOrDefault(x => x.Email == usuarioAutenticado);
                 denuncia.UsuarioId = usuario.Id;
-                envolvido.DenunciaId = denuncia.Id;
+
+                foreach(Envolvido item in ListaEnvolvidos)
+                {
+                    item.DenunciaId = denuncia.Id;
+                    db.Envolvido.Add(item);
+                }
 
                 db.Denuncia.Add(denuncia);
-                db.Envolvido.Add(envolvido);
+                
                 EnvioEmail envio = new EnvioEmail();
                 await Task.Factory.StartNew(() => envio.sendEmail(denuncia.Usuario, denuncia));
                 
@@ -65,7 +68,6 @@ namespace WebApplication4.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            /*ViewBag.UsuarioId = new SelectList(db.Usuario, "Id", "Nome", denuncia.Denuncia.UsuarioId);*/
             return View(denuncia);
         }
 
