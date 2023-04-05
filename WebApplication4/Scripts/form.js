@@ -1,10 +1,9 @@
 ﻿const summary = document.querySelector(".summary")
-const listaEnvolvidos = document.querySelector(".lista-envolvidos")
 const create = document.querySelector(".create")
 const dest = document.querySelector(".dest")
 const voltar = document.querySelector(".voltar")
 const avancar = document.querySelector(".avancar")
-console.log("testando")
+const enviar = document.querySelector(".enviar")
 
 let count = 1
 function slide(i, e) {
@@ -24,27 +23,44 @@ function slide(i, e) {
             create.classList.replace("hidden", "show")
             avancar.classList.remove("hidden")
             summary.classList.replace("show", "hidden")
+            enviar.classList.replace("show", "hidden")
             break
         case 3:
             create.classList.replace("show", "hidden")
             summary.classList.replace("hidden", "show")
             avancar.classList.add("hidden")
-
+            enviar.classList.replace("hidden", "show")
             break
         default:
             alert("erro")
     }
 }
 
-function adicionar() {
-    /* Adicionar envolvido */
-    const nome = document.querySelector("#Envolvido_Nome")
-    const funcao = document.querySelector("#Envolvido_Funcao")
-    const empresa = document.querySelector("#Envolvido_Empresa")
-    const listaEnvolvidos = document.querySelector(".lista-envolvidos")
+/* Adicionar envolvido */
+const grupoEnvolvidos = document.querySelector(".grupo-envolvidos")
+const campos = Array.from(document.querySelectorAll(".envolvidos input"))
+const listaEnvolvidos = document.querySelector(".lista-envolvidos")
+const btnAdd = document.querySelector(".btn-add-envolvido")
+const btnDelete = document.querySelector("li div .excluir-envolvido")
 
-    listaEnvolvidos.innerHTML += `<li><strong>${nome.value}</strong><strong>${funcao.value}</strong><strong>${empresa.value}</strong></li>`
+btnAdd.addEventListener("click", () => {
+    listaEnvolvidos.innerHTML += `<li><div class="item"><span>${campos[0].value}</span></div><div class="item"><span>${campos[1].value}</span></div><div class="item"><span>${campos[2].value}</span></div><button class="excluir-envolvido">Excluir</button></li>`
+    grupoEnvolvidos.classList.replace("hidden", "show")
+    for (let item of campos) {
+        item.value = ""
+    }
+})
 
+const validarForm = () => {
+    for (let item of campos) {
+        item.value != "" ? true : false
+    }
 }
 
+document.addEventListener("click", (e) => {
+    e = e.target
 
+    if (e.classList.contains("excluir-envolvido")) {
+        e.parentElement.remove()
+    }
+})

@@ -1,7 +1,7 @@
 ﻿@model  DenunciaViewModel
 @{
     ViewBag.Title = "Destinatario";
-    }
+}
 
 
 <section id="form-create-complaint" class="container-sm justify-content-center mt-n1">
@@ -20,7 +20,7 @@
                         @Html.ValidationMessageFor(model => model.Denuncia.OrgaoDestino, "", new { @class = "text-danger" })
                     </div>
                     @Html.DropDownListFor(model => model.Denuncia.OrgaoDestino, new SelectList(new[]
-                    {
+                         {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
                     }, "Value", "Text"), "Selecione")
@@ -29,7 +29,7 @@
                         @Html.ValidationMessageFor(model => model.Denuncia.Assunto, "", new { @class = "text-danger" })
                     </div>
                     @Html.DropDownListFor(model => model.Denuncia.Assunto, new SelectList(new[]
-                    {
+                         {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
                     }, "Value", "Text"), "Selecione")
@@ -39,7 +39,7 @@
                         @Html.ValidationMessageFor(model => model.Denuncia.OrgaoAssunto, "", new { @class = "text-danger" })
                     </div>
                     @Html.DropDownListFor(model => model.Denuncia.OrgaoAssunto, new SelectList(new[]
-                    {
+                         {
                         new {Text= "Testando 01", Value="meu valor 01"},
                         new {Text= "Testando 02", Value="meu valor 02"}
                     }, "Value", "Text"), "Selecione")
@@ -62,7 +62,7 @@
                                     @Html.ValidationMessageFor(model => model.Denuncia.Uf, "", new { @class = "text-danger" })
                                 </div>
                                 @Html.DropDownListFor(model => model.Denuncia.Uf, new SelectList(new[]
-                                {
+                                     {
                                     new {Text= "MA", Value="Maranhão"},
                                     new {Text= "SP", Value="São Paulo"}
                                 }, "Value", "Text"), "Selecione")
@@ -73,7 +73,7 @@
                                     @Html.ValidationMessageFor(model => model.Denuncia.Municipio, "", new { @class = "text-danger" })
                                 </div>
                                 @Html.DropDownListFor(model => model.Denuncia.Municipio, new SelectList(new[]
-                                {
+                                     {
                                     new {Text= "São Luis", Value="São Luis"},
                                     new {Text= "Testando 02", Value="meu valor 02"}
                                 }, "Value", "Text"), "Selecione")
@@ -105,15 +105,15 @@
                             @Html.ValidationMessageFor(model => model.Envolvido.Empresa, "", new { @class = "text-danger " })
                         </div>
                         @Html.EditorFor(model => model.Envolvido.Empresa, new { @class = "dado-envolvido empresa" })
-
+                        <button type="button" class="btn-add-envolvido">Adicionar envolvido</button>
                     </div>
 
-                    <div class="grupo-envolvidos">
+                    <div class="hidden grupo-envolvidos">
                         <div class="container">
                             <h3>Lista de Envolvidos Incluídos</h3>
-                            <div class="head-list"><strong>Nome</strong><strong>Função</strong><strong>Órgão</strong><strong>Ações</strong></div>
+                            <div class="head-list"><div class="item"><strong>Nome</strong></div><div class="item"><strong>Função</strong></div><div class="item"><strong>Órgão</strong></div><strong>Ações</strong></div>
                             <ul class="lista-envolvidos">
-                                <li><strong>Excluir</strong><strong>Meu nome</strong><strong>minha função</strong><strong>orgão</strong></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -146,26 +146,16 @@
 
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Enviar" class="btn btn-default" />
-                </div>
+            <div class="buttons d-flex">
+                <button type="button" onclick="slide(-1)" class="interacao voltar btn btn-secondary">&lt;&lt; Voltar</button>
+                <button type="button" onclick="slide(1)" class="interacao avancar btn btn-primary">Avançar &gt;&gt;</button>
+                <input type="submit" value="Enviar" class="enviar btn btn-primary hidden " />
             </div>
 
-        }
-
-        <div class="buttons d-flex">
-            <button onclick="adicionar()" class="btn-add-envolvido">envolvido</button>
-            <button onclick="slide(-1)" class="interacao voltar btn btn-secondary">&lt;&lt; Voltar</button>
-            <button onclick="slide(1)" class="interacao avancar btn btn-primary">Avançar &gt;&gt;</button>
-        </div>
+         }
 
     </div>
 
 </section>
 
-
-
 <script src="../../Scripts/form.js"></script>
-
-

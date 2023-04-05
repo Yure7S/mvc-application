@@ -59,6 +59,44 @@ body {
     #form-create-complaint .form-frag input:focus, #form-create-complaint .form-frag textarea:focus, #form-create-complaint .form-frag select:focus {
       border: 1px solid #3486eb;
       box-shadow: 0px 0px 10px #4c91e6; }
+  #form-create-complaint .form-frag button {
+    padding: 4px 10px;
+    border: 1px solid #0a0a0a;
+    border-radius: 4px; }
+
+#form-create-complaint .grupo-envolvidos {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 25px; }
+  #form-create-complaint .grupo-envolvidos * {
+    padding: 0px; }
+  #form-create-complaint .grupo-envolvidos .container {
+    width: 100%;
+    padding: 0px; }
+    #form-create-complaint .grupo-envolvidos .container *:not(strong) {
+      margin: 0px; }
+    #form-create-complaint .grupo-envolvidos .container h3 {
+      background-color: #f2f2f2;
+      padding: 10px;
+      font-size: 18px;
+      border-bottom: 1px solid black; }
+    #form-create-complaint .grupo-envolvidos .container .head-list, #form-create-complaint .grupo-envolvidos .container li {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 15px; }
+      #form-create-complaint .grupo-envolvidos .container .head-list .item, #form-create-complaint .grupo-envolvidos .container li .item {
+        width: 30%;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      #form-create-complaint .grupo-envolvidos .container .head-list button, #form-create-complaint .grupo-envolvidos .container li button {
+        border: 0px;
+        background-color: transparent;
+        color: red; }
+        #form-create-complaint .grupo-envolvidos .container .head-list button:hover, #form-create-complaint .grupo-envolvidos .container li button:hover {
+          text-decoration: underline; }
 
 #form-create-complaint .buttons {
   gap: 15px;
