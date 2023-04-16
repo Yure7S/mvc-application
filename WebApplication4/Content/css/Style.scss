@@ -1,0 +1,100 @@
+﻿@import "Partials/Header";
+@import "Partials/Footer";
+@import "Partials/Base";
+
+#form-create-complaint {
+
+    .form-container {
+        width: 95%;
+        max-width: 750px;
+        margin: 100px auto 0px;
+    }
+
+    .form-frag {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 25px 30px 10px;
+        background-color: #FCFCFC;
+        border: 1px solid #cfcfcf;
+
+        input, textarea, select {
+            width: 100%;
+            max-width: none;
+            margin: 2px 0px 20px;
+            padding: 10px 18px;
+            border: 1px solid #0a0a0a;
+            border-radius: 4px;
+
+            &:focus {
+                border: 1px solid #3486eb;
+                box-shadow: 0px 0px 10px #4c91e6;
+            }
+        }
+
+        button {
+            padding: 4px 10px;
+            border: 1px solid #0a0a0a;
+            border-radius: 4px;
+        }
+    }
+
+    .grupo-envolvidos {
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-top: 25px;
+
+        & * {
+            padding: 0px;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0px;
+
+            & *:not(strong) {
+                margin: 0px;
+            }
+
+            h3 {
+                background-color: #f2f2f2;
+                padding: 10px;
+                font-size: 18px;
+                border-bottom: 1px solid black;
+            }
+
+            .head-list, li {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px 15px;
+
+                .item {
+                    width: 30%;
+                    text-align: left;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                button {
+                    border: 0px;
+                    background-color: transparent;
+                    color: red;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    .buttons {
+        gap: 15px;
+        width: fit-content;
+        margin: 40px auto 0px;
+        color: white;
+    }
+}
+ 

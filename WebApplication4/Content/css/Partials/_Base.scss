@@ -1,0 +1,22 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 200px;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
